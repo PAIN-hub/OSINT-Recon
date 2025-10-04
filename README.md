@@ -113,15 +113,14 @@ Add a new module under /modules/ — e.g. LinkedIn scraping, phone lookup, or su
 ** Author **
 
 ƤȺIƝ
-
-**💻 CyberSec Student & Web Developer**
-**🐙 GitHub: PAIN-hub**
+** 💻 CyberSec Student & Web Developer **
+** 🐙 GitHub: PAIN-hub **
 
 ### ⭐ Support
 
 If you like the project, give it a ⭐ on GitHub — it helps more people discover it!
 
 ### Contact Me @
-<a style='text-decoration: none' href='https://x.com/0x_beely'>X (Twitter) </a>
-, <a style='text-decoration: none'  href='https://m.facebook.com/ƤȺIƝ Ise'> Facebook </a>
-, <a style='text-decoration: none'  href='https://Instagram.com/0x_beely'> Instagram </a>
+<a href='https://x.com/0x_beely'>X (Twitter) </a>
+<a href='https://m.facebook.com/ƤȺIƝ Ise'> Facebook </a>
+<a href='https://Instagram.com/0x_beely'> Instagram </a>

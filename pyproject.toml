@@ -1,0 +1,17 @@
+[project]
+name = "osint-toolkit"
+version = "0.1.0"
+description = "Modular OSINT Toolkit by PAIN-hub"
+authors = [{ name = "PAIN-hub" }]
+license = { text = "MIT" }
+dependencies = [
+    "requests",
+    "python-whois",
+    "dnspython",
+    "Pillow",
+    "exifread",
+    "rich",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
