@@ -1,9 +1,34 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "osint-toolkit"
 version = "0.1.0"
-description = "Modular OSINT Toolkit by PAIN-hub"
-authors = [{ name = "PAIN-hub" }]
-license = { text = "MIT" }
+description = "Modular OSINT Toolkit for intelligence gathering and digital footprint analysis"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "PAIN-hub", email = ""}
+]
+keywords = ["osint", "reconnaissance", "intelligence", "security", "toolkit"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
 dependencies = [
     "requests",
     "python-whois",
@@ -11,7 +36,28 @@ dependencies = [
     "Pillow",
     "exifread",
     "rich",
+    "colorama",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "flake8",
+    "isort",
+]
+
+[project.urls]
+Homepage = "https://github.com/PAIN-hub/OSINT-Recon"
+Repository = "https://github.com/PAIN-hub/OSINT-Recon"
+Issues = "https://github.com/PAIN-hub/OSINT-Recon/issues"
+
+[project.scripts]
+osint-recon = "osint.recon:main"
+
+[tool.setuptools]
+packages = ["osint"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
