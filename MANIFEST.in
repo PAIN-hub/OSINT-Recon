@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include requirements.txt
+include ethics.md
+recursive-include osint *.py
+recursive-include tests *.py
