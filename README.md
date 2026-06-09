@@ -1,126 +1,178 @@
-# OSINT Recon Tool
+# OSINT Recon Toolkit
 
-**OSINT Recon Tool is a Python-based intelligence gathering framework that collects data from various online sources to help identify digital footprints, linked accounts, emails, usernames, IPs, and more — all legally and ethically.**
+[![PyPI](https://img.shields.io/pypi/v/osint-toolkit?label=pyPI&color=informational&logo=python&logoColor=white)](https://pypi.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Language: Python](https://img.shields.io/badge/language-Python-3670A0.svg)](https://www.python.org)
 
-## legal concept.
+A professional, modular, and ethical OSINT (Open-Source Intelligence) toolkit for reconnaissance, digital footprint analysis, and threat intelligence enrichment. Built in Python and designed to be extensible with additional modules.
 
-> This tool is built for researchers, ethical hackers, and cybersecurity students who want to streamline their reconnaissance workflow using open-source data.
+- Repository: https://github.com/PAIN-hub/OSINT-Recon
+- Package name: `osint-toolkit`
 
-## features
+Table of contents
+- Features
+- Installation
+- Usage
+- Command line entrypoint
+- Project structure
+- Modules
+- Development & testing
+- Security & ethics
+- License
+- Contributing
+- Authors & support
 
-1. Username Lookup — Finds linked accounts across 100+ platforms.
+---
 
-2. IP Lookup — Pulls IP geolocation, ISP, ASN, and proxy/VPN detection.
+## Features
 
-3. Email Enumeration — Checks email breaches using HaveIBeenPwned API.
+- Username lookup across many public platforms
+- IP address lookup (geolocation, ISP, ASN, proxy/VPN detection)
+- Email breach checks (HaveIBeenPwned-compatible checks)
+- Domain WHOIS lookup and basic domain intelligence
+- Structured output export (JSON) saved in `reports/`
+- Modular architecture: add new modules under `osint/modules`
 
-4. Social Media Recon — Basic metadata scraping from public profiles.
+## Installation
 
-5. Output Export — Save all findings in structured JSON or TXT.
+Requirements: Python 3.8+
 
-6. Modular System — Easy to expand with new recon modules.
+Recommended (pip from GitHub):
 
-### Use Cases
-
-1. Digital footprint analysis
-
-2. Threat intelligence enrichment
-
-3. Penetration testing prep
-
-4. Cybersecurity research
-
-5. Personal privacy audit
-
-# Installation
-
-1. Clone the repo and install dependencies:
+```bash
+pip install git+https://github.com/PAIN-hub/OSINT-Recon.git
 ```
+
+Or install from a local clone:
+
+```bash
 git clone https://github.com/PAIN-hub/OSINT-Recon.git
 cd OSINT-Recon
+pip install -e .
+# For development extras (tests, linters)
+pip install -e .[dev]
 ```
-2. Install requirements
-```
+
+You can also use the provided requirements file if you prefer:
+
+```bash
 pip install -r requirements.txt
 ```
-3. python version requirement:
 
-Make sure you’re on `Python 3.9+.`
+## Usage
 
-# Usage
+Run the interactive console interface:
 
-1. Run the tool from terminal:
+```bash
+# From the repository root
+python3 recon.py
 
-2. python3 recon.py
+# Or use the installed console script
+osint-recon
+```
 
-3. Then follow the on-screen prompts:
+Follow the on-screen menu to run username, IP, email, and domain lookups. Reports are saved to the `reports/` directory as JSON files.
 
-[1] Username Lookup
-[2] IP Address Lookup
-[3] Email Breach Check
-[4] Domain WHOIS
-[5] Exit
+Example (username lookup):
 
-## Example
-
+```
 $ python3 recon.py
-
-Enter target username: johndoe
-
+Select an option: 1
+Enter username: johndoe
 [+] Checking across platforms...
-- Twitter: Found ✅
-- Instagram: Not found ❌
-- GitHub: Found ✅
-- Reddit: Found ✅
+[+] Report saved: reports/johndoe.json
+```
 
-[+] Report saved: /reports/johndoe.json
+## Command line entrypoint
 
-### Project Structure
+The package installs a console script `osint-recon` that invokes the tool's main entrypoint. After installing the package, run:
+
+```bash
+osint-recon
+```
+
+## Project structure
 
 ```
 OSINT-Recon/
-├── recon.py               # main tool entry point
-├── modules/
-│   ├── username_lookup.py
-│   ├── ip_lookup.py
-│   ├── email_breach.py
-│   ├── domain_whois.py
-├── reports/               # output folder
-├── requirements.txt
-└── README.md`
+├── osint/                  # Package modules and CLI
+│   ├── cli.py              # CLI implementation
+│   ├── recon.py            # (if present) older top-level script
+│   ├── modules/            # Recon modules (username, ip, email, whois, ...)
+│   └── utils/              # Utility helpers
+├── reports/                # Generated JSON output
+├── tests/                  # Unit tests
+├── pyproject.toml          # Build configuration
+├── setup.py                # Setuptools compatibility
+├── requirements.txt        # Optional requirements list
+├── MANIFEST.in             # Files included in source distribution
+├── README.md               # This file
+└── LICENSE                 # Project license (MIT)
 ```
 
-## Dependencies
+## Modules
 
-`requests` `colorama` `json` `ipwhois` `python-whois` `Install all with:``
- 
- ** All in one Installation **
- ```
-pip install -r requirements.txt
+Add new reconnaissance modules in `osint/modules/`. Each module should expose a simple function interface and return JSON-serializable results. Example module responsibilities:
+
+- `username_lookup.py` — query multiple public services for account matches
+- `ip_lookup.py` — geolocation, ASN, ISP, proxy checks
+- `email_breach.py` — query breach databases for compromised addresses
+- `domain_whois.py` — return parsed WHOIS information
+
+## Development & testing
+
+Run tests with pytest:
+
+```bash
+pytest
 ```
 
-⚠️ Legal Disclaimer
+For code style and formatting, recommended tools (available in `[dev]` extras): `black`, `flake8`, `isort`.
 
-> This tool is strictly for educational and ethical testing.
-Do not use it on targets without explicit consent.
-The author and contributors are not responsible for any misuse.
+## Security & Ethics
 
-# Contributing
+This tool is intended for lawful, ethical, and authorized use only. By using this software you agree to:
 
-Want to make it better? Fork the repo and send a pull request.
-Add a new module under /modules/ — e.g. LinkedIn scraping, phone lookup, or subdomain finder.
+- Only run recon on systems and accounts for which you have explicit permission.
+- Respect privacy and applicable laws in your jurisdiction.
+- Not use the tool to harass, stalk, or otherwise harm people or organizations.
 
-** Author **
+The author and contributors are not responsible for misuse.
 
-ƤȺIƝ
-** 💻 CyberSec Student & Web Developer **
-** 🐙 GitHub: PAIN-hub **
+Refer to `ethics.md` for more detail on responsible OSINT practices.
 
-### ⭐ Support
+## License
 
-If you like the project, give it a ⭐ on GitHub — it helps more people discover it!
+This project is licensed under the MIT License — see the `LICENSE` file for details.
 
-### Contact Me @
-<a href='https://x.com/0x_beely'>X (Twitter) </a>
-<a href='https://m.facebook.com/ƤȺIƝ Ise'> Facebook </a>
-<a href='https://Instagram.com/0x_beely'> Instagram </a>
+Summary (short):
+
+```
+MIT License
+Copyright (c) PAIN-hub
+```
+
+## Contributing
+
+We welcome contributions:
+
+1. Fork the repository
+2. Create a feature branch
+3. Add tests for new functionality
+4. Open a pull request with a clear description
+
+Please follow the existing code style and include unit tests where applicable.
+
+## Authors & Support
+
+- PAIN-hub — project author and maintainer
+
+If you find this project useful, please star the repository ⭐ and consider opening issues or PRs to improve it.
+
+Contact / Social:
+- GitHub: https://github.com/PAIN-hub
+- X: https://x.com/0x_beely
+
+---
+
+Thank you for using OSINT Recon Toolkit. Use responsibly.
