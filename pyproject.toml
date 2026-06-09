@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "PAIN-hub", email = ""}
+    {name = "PAIN-hub", email = "virusjondy@gmail.com"}
 ]
 keywords = ["osint", "reconnaissance", "intelligence", "security", "toolkit"]
 classifiers = [
