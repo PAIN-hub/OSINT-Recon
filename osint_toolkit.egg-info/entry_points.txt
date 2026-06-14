@@ -1,0 +1,2 @@
+[console_scripts]
+osint-recon = osint.recon:main

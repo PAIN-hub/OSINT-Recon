@@ -1,0 +1,31 @@
+{
+    "type": "username",
+    "username": "0xbeely",
+    "results": {
+        "GitHub": {
+            "url": "https://github.com/0xbeely",
+            "status": 404,
+            "exists": false
+        },
+        "Twitter": {
+            "url": "https://twitter.com/0xbeely",
+            "status": 200,
+            "exists": true
+        },
+        "Instagram": {
+            "url": "https://instagram.com/0xbeely",
+            "status": 200,
+            "exists": true
+        },
+        "Reddit": {
+            "url": "https://www.reddit.com/user/0xbeely",
+            "status": 200,
+            "exists": true
+        },
+        "Telegram": {
+            "url": "https://t.me/0xbeely",
+            "status": 200,
+            "exists": true
+        }
+    }
+}

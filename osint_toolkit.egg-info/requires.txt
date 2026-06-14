@@ -1,0 +1,14 @@
+requests
+python-whois
+dnspython
+Pillow
+exifread
+rich
+colorama
+
+[dev]
+pytest
+pytest-cov
+black
+flake8
+isort
