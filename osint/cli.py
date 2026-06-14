@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import json
-from osint.modules import user, domain, ip, filemeta
+from osint.modules import user, domain, ip, filemeta, email_breach
 
 def main():
     parser = argparse.ArgumentParser(
@@ -30,6 +30,11 @@ def main():
     p_file.add_argument("path")
     p_file.add_argument("--json-out")
 
+    # email breach
+    p_email = sub.add_parser("email", help="Check email breaches via XposedOrNot")
+    p_email.add_argument("email")
+    p_email.add_argument("--json-out")
+
     args = parser.parse_args()
 
     if args.cmd == "user":
@@ -40,6 +45,8 @@ def main():
         result = ip.ip_lookup(args.ip)
     elif args.cmd == "file":
         result = filemeta.extract_metadata(args.path)
+    elif args.cmd == "email":
+        result = email_breach.email_breach(args.email)
     else:
         parser.error("Unknown command")
 
